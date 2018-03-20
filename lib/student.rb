@@ -7,7 +7,7 @@ class Student
     @id = id
   end
   # Remember, you can access your database connection anywhere in this class
-  #  with DB[:conn]  
+  #  with DB[:conn]
 
   def self.create_table
     sql = <<-SQL
@@ -17,9 +17,15 @@ class Student
         grade TEXT
         )
         SQL
-    DB[:conn]execute(sql)
+    DB[:conn].execute(sql)
   end
 
-  
-  
+  def self.drop_table
+    sql = <<-SQL
+      DROP TABLE students
+    DB[:conn].execute(sql)
+  end
+
+
+
 end
